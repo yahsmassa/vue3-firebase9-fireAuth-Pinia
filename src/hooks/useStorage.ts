@@ -1,26 +1,26 @@
-import { Nullable } from '@/types/base'
+import { Nullable } from "@/types/mytype";
 
 const getItemClosure = (storage: Storage) => {
   return function getItem<T>(key: string): Nullable<T> {
-    let temp
+    let temp;
     try {
-      temp = storage.getItem(key)
+      temp = storage.getItem(key);
       if (!temp) {
-        return null
+        return null;
       }
 
-      return JSON.parse(temp) as T
+      return JSON.parse(temp) as T;
     } catch {
-      return temp as unknown as T
+      return temp as unknown as T;
     }
-  }
-}
+  };
+};
 
 const setItemClosure = (storage: Storage) => {
   return function setItem(key: string, item: any): void {
-    storage.setItem(key, JSON.stringify(item))
-  }
-}
+    storage.setItem(key, JSON.stringify(item));
+  };
+};
 
 export default function useStorage() {
   return {
@@ -32,5 +32,5 @@ export default function useStorage() {
       setItem: setItemClosure(sessionStorage),
       getItem: getItemClosure(sessionStorage),
     },
-  }
+  };
 }

@@ -46,7 +46,6 @@ import {
   Dialog,
   DialogOverlay,
   DialogTitle,
-  DialogDescription,
   TransitionRoot,
   TransitionChild
 } from '@headlessui/vue'

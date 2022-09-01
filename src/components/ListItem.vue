@@ -1,5 +1,5 @@
 <template>
-  <li class="py-2">
+  <li class="">
     <slot />
   </li>
 </template>

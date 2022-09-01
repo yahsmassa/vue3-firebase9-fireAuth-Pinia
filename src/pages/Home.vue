@@ -1,21 +1,19 @@
 <template>
   <main v-show="initiated && isAuthenticated">
     <section class="px-4">
-      <div class="text-2xl">
-        <p ref="t1">
-          Hello
-        </p>
-        <p ref="t2"><span class="emphasis">{{ user?.nickName }}</span> 😊</p>
-        <p ref="t3">{{ clock }}</p>
-        <p v-html="todayMessage" ref="t4" />
+      <div class="text-2xl flex flex-row justify-between">
+        <p ref="t3">{{ clock }} </p>
+        <p class="text-2xl" v-html="todayMessage" ref="t4" />
+        &nbsp;
       </div>
     </section>
     <section class="px-4 mt-4" ref="t5">
       <InputCard v-model:show-all="checked" @save="events.onClickSave" ref="helloWorld" />
     </section>
+    <hr class="mt-5">
     <section class="px-4 mt-4" ref="t6">
       <List>
-        <template v-for="item in computedRefs.todoList" :key="item.id">
+        <template v-for="(item, index)  in computedRefs.todoList" :key="index">
           <ListItem>
             <TodoCard :todo="item" @delete="events.onClickDelete" @toggle="events.onClickToggle" />
           </ListItem>
