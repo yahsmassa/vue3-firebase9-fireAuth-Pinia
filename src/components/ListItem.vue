@@ -1,5 +1,5 @@
 <template>
-  <li class="">
+  <li class="my-2">
     <slot />
   </li>
 </template>
