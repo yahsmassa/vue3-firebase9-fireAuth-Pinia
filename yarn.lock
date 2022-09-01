@@ -4039,11 +4039,6 @@
     "@vue/server-renderer" "3.2.31"
     "@vue/shared" "3.2.31"
 
-"vue3-kakao-sdk@^0.2.1":
-  "integrity" "sha512-89EaFljCDO8CB10qxsLnPZgLGz5ZQRz1Zcapth2NsRQntkLOikiGQ3NwLoNj01KXV3vZMJrc+9O8/OLJQhrt5g=="
-  "resolved" "https://registry.npmjs.org/vue3-kakao-sdk/-/vue3-kakao-sdk-0.2.1.tgz"
-  "version" "0.2.1"
-
 "webidl-conversions@^3.0.0":
   "integrity" "sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE= sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
   "resolved" "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz"

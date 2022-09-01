@@ -7,8 +7,11 @@
       <List>
         <template v-for="(provider, index) in loginProviderList" :key="index">
           <ListItem>
-            <Button class="btn-success flex items-center mx-auto w-full" :class="[provider.color]" @click="events.onClickLogin(provider.provider, provider.name)">
-              <img class="rounded-full w-8 h-8 mr-4" :src="provider.icon" :alt="provider.name"> Login with {{ provider.name }}
+            <Button class="btn-success flex items-center mx-auto w-full" :class="[provider.color]"
+              @click="events.onClickLogin(provider.provider, provider.name)">
+              <img class="rounded-full w-8 h-8 mr-4" :src="provider.icon" :alt="provider.name"> Login with {{
+                  provider.name
+              }}
             </Button>
           </ListItem>
         </template>
@@ -19,7 +22,6 @@
 
 
 <script lang="ts" setup>
-import useKakaoLoginBtn from '@/hooks/components/useKakaoLoginBtn'
 import { ref } from 'vue'
 import { Nullable } from '@/types/base'
 import { GoogleAuthProvider, GithubAuthProvider, AuthProvider } from 'firebase/auth'
@@ -42,8 +44,6 @@ const btnRef = ref<Nullable<HTMLElement>>(null)
 const { loginWithFirebase } = useAuthStore()
 const router = useRouter()
 
-useKakaoLoginBtn(btnRef)
-
 const loginProviderList: LoginProvider[] = [
   {
     name: 'Google',
@@ -60,7 +60,7 @@ const loginProviderList: LoginProvider[] = [
 ]
 
 const events = {
-  async onClickLogin (provider: AuthProvider, name: Provider) {
+  async onClickLogin(provider: AuthProvider, name: Provider) {
     await loginWithFirebase(provider, name)
     localStorage.setItem('provider', name)
     await router.push('/')
@@ -70,5 +70,4 @@ const events = {
 </script>
 
 <style scoped lang="scss">
-
 </style>

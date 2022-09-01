@@ -1,1 +1,1 @@
-export type Provider = 'Kakao' | 'Github' | 'Google'
+export type Provider = "Github" | "Google";
