@@ -1,51 +1,51 @@
-import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
+import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
 //  Layouts
-import defaultLayout from '@/layouts/default.vue'
-import authenticatedLayout from '@/layouts/authenticated.vue'
+import defaultLayout from "@/layouts/default.vue";
+import authenticatedLayout from "@/layouts/authenticated.vue";
 
 //  Pages
-import Home from '@/pages/Home.vue'
-import RouteTest from '@/pages/RouteTest.vue'
-import Login from '@/pages/auth/Login.vue'
-import { useAuthentication } from '@/hooks/routes/auth'
+import Home from "@/pages/Home.vue";
+import RouteTest from "@/pages/RouteTest.vue";
+import Login from "@/pages/Auth/Login.vue";
+import { useAuthentication } from "@/hooks/auth";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     component: authenticatedLayout,
     children: [
       {
-        path: '',
+        path: "",
         component: Home,
-        meta: { title: 'Todo' }
+        meta: { title: "Todo" },
       },
       {
-        path: 'route-test',
+        path: "route-test",
         component: RouteTest,
-        meta: { title: 'Test Home 2'}
-      }
+        meta: { title: "Test Home 2" },
+      },
     ],
-    ...useAuthentication()
+    ...useAuthentication(),
   },
   {
-    path: '/auth',
-    name: 'Auth',
+    path: "/Auth",
+    name: "Auth",
     component: defaultLayout,
     children: [
       {
-        path: 'Login',
-        component: Login
-      }
-    ]
-  }
-]
+        path: "Login",
+        component: Login,
+      },
+    ],
+  },
+];
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 }
+    return { top: 0 };
   },
-})
+});

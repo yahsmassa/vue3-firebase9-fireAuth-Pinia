@@ -1,25 +1,25 @@
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { Pausable, useIntervalFn } from '@vueuse/core'
-import { Nullable } from '@/types/base'
-import { dateString } from '@/utils/stringFormat'
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { Pausable, useIntervalFn } from "@vueuse/core";
+import { Nullable } from "@/types/mytype";
+import { dateString } from "@/utils/stringFormat";
 
-function getCurrentTime (format: string) {
-  return dateString(new Date(),format)
+function getCurrentTime(format: string) {
+  return dateString(new Date(), format);
 }
 
-export function useClock (format: string = 'MMMM D dddd hh:mm') {
-  const value = ref<string>(getCurrentTime(format))
-  let pausable: Nullable<Pausable> = null
+export function useClock(format: string = "MMMM D dddd hh:mm") {
+  const value = ref<string>(getCurrentTime(format));
+  let pausable: Nullable<Pausable> = null;
 
   onMounted(() => {
     useIntervalFn(() => {
-      value.value = getCurrentTime(format)
-    }, 1000)
-  })
+      value.value = getCurrentTime(format);
+    }, 1000);
+  });
 
   onBeforeUnmount(() => {
-    pausable?.pause()
-  })
+    pausable?.pause();
+  });
 
-  return value
+  return value;
 }

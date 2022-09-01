@@ -1,7 +1,6 @@
 import { computed, ref } from "vue";
 import { defineStore } from "pinia";
-import { Provider } from "@/types/auth";
-import { Nullable } from "@/types/base";
+import { Provider, Nullable } from "@/types/mytype";
 import {
   AuthProvider,
   browserSessionPersistence,

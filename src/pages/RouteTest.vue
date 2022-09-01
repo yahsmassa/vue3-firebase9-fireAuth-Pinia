@@ -7,25 +7,17 @@
         </p>
         <p ref="t2"><span class="emphasis">{{ user?.nickName }}</span> 😊</p>
         <p ref="t3">{{ clock }}</p>
-        <p v-html="todayMessage" ref="t4"/>
+        <p v-html="todayMessage" ref="t4" />
       </div>
     </section>
     <section class="px-4 mt-4" ref="t5">
-      <InputCard
-        v-model:show-all="checked"
-        @save="events.onClickSave"
-        ref="helloWorld"
-      />
+      <InputCard v-model:show-all="checked" @save="events.onClickSave" ref="helloWorld" />
     </section>
     <section class="px-4 mt-4" ref="t6">
       <List>
         <template v-for="item in computedRefs.todoList" :key="item.id">
           <ListItem>
-            <TodoCard
-              :todo="item"
-              @delete="events.onClickDelete"
-              @toggle="events.onClickToggle"
-            />
+            <TodoCard :todo="item" @delete="events.onClickDelete" @toggle="events.onClickToggle" />
           </ListItem>
         </template>
         <template v-if="todoList.length === 0">
@@ -43,19 +35,19 @@ import { computed, watch, ref, onMounted, toRefs, Ref, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { useClock } from '@/hooks/useClock'
-import { useFadeInOut } from '@/hooks/styles/useTransitions'
+import { useFadeInOut } from '@/hooks/useTransitions'
 import { useHtmlTemplateRefs, useHasHelloWorldTemplateRefs, useTemplateRefsWrap } from '@/hooks/useTemplateRefs'
 import { useAuthStore } from '@/store/auth'
 import { useTodoStore } from '@/store/todo'
-import { Todo } from '@/types/todo'
+import { Todo } from '@/types/mytype'
 
 import useScrollObserver from '@/hooks/useScrollObserver'
 
-import List from '@/components/atoms/List.vue'
-import ListItem from '@/components/atoms/ListItem.vue'
-import TodoCard from '@/components/molecules/Cards/TodoCard.vue'
-import InputCard from '@/components/molecules/Cards/InputCard.vue'
-import NoneCard from '@/components/molecules/Cards/NoneCard.vue'
+import List from '@/components/List.vue'
+import ListItem from '@/components/ListItem.vue'
+import TodoCard from '@/components/TodoCard.vue'
+import InputCard from '@/components/InputCard.vue'
+import NoneCard from '@/components/NoneCard.vue'
 import { useDialog } from '@/store/dialog'
 
 const dialog = useDialog()
@@ -104,7 +96,7 @@ watch(isAuthenticated, async authenticated => {
 // })
 
 const events = {
-  onClickSave (text: string) {
+  onClickSave(text: string) {
     if (text === 'hello-world-test') {
       helloWorld.value?.helloWorld()
       return
@@ -122,14 +114,14 @@ const events = {
 
     todoStore.addTodo({ text, level: 0 }, user.value?.userId)
   },
-  async onClickDelete (todo: Todo) {
+  async onClickDelete(todo: Todo) {
     const confirmed = await dialog.confirm('Do you want to delete this todo? 🧐', { title: 'Delete Todo' })
 
     if (confirmed) {
       await todoStore.removeTodo(todo, user.value?.userId)
     }
   },
-  onClickToggle (todo: Todo) {
+  onClickToggle(todo: Todo) {
     todoStore.modifyTodo({ ...todo, done: !todo.done }, user.value?.userId)
   }
 }

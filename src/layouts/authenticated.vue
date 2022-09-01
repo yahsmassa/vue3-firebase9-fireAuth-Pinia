@@ -8,17 +8,16 @@
 </template>
 
 <script lang="ts" setup>
-import AppBar from '@/components/organisms/AppBar.vue'
+import AppBar from '@/components/AppBar.vue'
 import useScrollObserver from '@/hooks/useScrollObserver'
 
 const { isScrolledY } = useScrollObserver({
   threshold: 10,
-  callback (x, y) {
+  callback(x, y) {
     console.log('hello authenticated layout!', { x, y })
   }
 })
 </script>
 
 <style scoped lang="scss">
-
 </style>

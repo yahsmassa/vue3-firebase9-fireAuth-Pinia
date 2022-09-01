@@ -23,15 +23,15 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Nullable } from '@/types/base'
+import { Nullable } from '@/types/mytype'
 import { GoogleAuthProvider, GithubAuthProvider, AuthProvider } from 'firebase/auth'
 import { useAuthStore } from '@/store/auth'
 import { useRouter } from 'vue-router'
 
-import Button from '@/components/atoms/Button.vue'
-import List from '@/components/atoms/List.vue'
-import ListItem from '@/components/atoms/ListItem.vue'
-import { Provider } from '@/types/auth'
+import Button from '@/components/Button.vue'
+import List from '@/components/List.vue'
+import ListItem from '@/components/ListItem.vue'
+import { Provider } from '@/types/mytype'
 
 interface LoginProvider {
   name: Provider;

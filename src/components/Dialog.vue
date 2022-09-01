@@ -9,22 +9,12 @@
             &#8203;
           </span>
 
-          <TransitionChild
-            as="template"
-            enter="duration-300 ease-out"
-            enter-from="opacity-0 scale-95"
-            enter-to="opacity-100 scale-100"
-            leave="duration-200 ease-in"
-            leave-from="opacity-100 scale-100"
-            leave-to="opacity-0 scale-95"
-          >
+          <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95">
             <div
-              class="dark:text-gray-50 bg-container inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
-            >
-              <DialogTitle
-                as="h3"
-                class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-50"
-              >
+              class="dark:text-gray-50 bg-container inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-50">
                 {{ dialogInstance?.title }}
               </DialogTitle>
               <div class="mt-2">
@@ -34,17 +24,11 @@
               </div>
 
               <div class="mt-4 flex justify-end">
-                <Button
-                  class="btn-error mr-2"
-                  @click="events.onClickClose"
-                >
+                <Button class="btn-error mr-2" @click="events.onClickClose">
                   {{ dialogInstance?.isConfirm ? 'NO' : 'Got it.' }}
                 </Button>
                 <template v-if="dialogInstance?.isConfirm">
-                  <Button
-                    class="btn-success"
-                    @click="events.onClickConfirm"
-                  >
+                  <Button class="btn-success" @click="events.onClickConfirm">
                     OK
                   </Button>
                 </template>
@@ -69,21 +53,20 @@ import {
 import { storeToRefs } from 'pinia'
 import { useDialog } from '@/store/dialog'
 
-import Button from '@/components/atoms/Button.vue'
+import Button from '@/components/Button.vue'
 
 const dialogStore = useDialog()
 const { value, dialogInstance } = storeToRefs(dialogStore)
 
 const events = {
-  onClickClose () {
+  onClickClose() {
     dialogStore.closeDialog(false)
   },
-  onClickConfirm () {
+  onClickConfirm() {
     dialogStore.closeDialog(true)
   }
 }
 </script>
 
 <style scoped>
-
 </style>

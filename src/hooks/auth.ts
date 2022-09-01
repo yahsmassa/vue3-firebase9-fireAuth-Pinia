@@ -1,7 +1,7 @@
 import { useAuthStore } from "@/store/auth";
 import { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
 import { storeToRefs } from "pinia";
-import { Provider } from "@/types/auth";
+import { Provider } from "@/types/mytype";
 import useStorage from "@/hooks/useStorage";
 
 export function useAuthentication() {
